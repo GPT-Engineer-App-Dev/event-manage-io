@@ -1,4 +1,5 @@
 import { Container, Text, VStack, Heading, Box, Button, SimpleGrid } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -22,10 +23,12 @@ const Index = () => {
           <Heading as="h2" size="lg" mb={4}>Upcoming Events</Heading>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
             {events.map((event, index) => (
-              <Box key={index} p={5} shadow="md" borderWidth="1px" borderRadius="md">
-                <Heading fontSize="xl">{event.title}</Heading>
-                <Text mt={4}>{event.details}</Text>
-              </Box>
+              <Link to={`/event/${index}`} key={index}>
+                <Box p={5} shadow="md" borderWidth="1px" borderRadius="md">
+                  <Heading fontSize="xl">{event.title}</Heading>
+                  <Text mt={4}>{event.details}</Text>
+                </Box>
+              </Link>
             ))}
           </SimpleGrid>
         </Box>
